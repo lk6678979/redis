@@ -1,8 +1,8 @@
 spring:
   redis:
-    host: 192.168.0.90
-    database: 9
-    password: sziov
+    cluster:
+      nodes: redis01:7000,redis02:7000,redis03:7000
+    password: lKcD#t5gbZdY&MzD
     timeout: 60000ms
     jedis:
       pool:

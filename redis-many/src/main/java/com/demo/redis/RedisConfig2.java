@@ -14,6 +14,7 @@ import org.springframework.data.redis.connection.RedisClusterConfiguration;
 import org.springframework.data.redis.connection.RedisStandaloneConfiguration;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.RedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
@@ -51,6 +52,20 @@ public class RedisConfig2{
         redisTemplate.setValueSerializer(jackson2JsonRedisSerializer); // value序列化
         redisTemplate.setHashKeySerializer(stringSerializer); // Hash key序列化
         redisTemplate.setHashValueSerializer(jackson2JsonRedisSerializer); // Hash value序列化
+        redisTemplate.afterPropertiesSet();
+        return redisTemplate;
+    }
+
+    @Bean(name = "stringRedisTemplate2")
+    public StringRedisTemplate stringRedisTemplate2() {
+        // 配置redisTemplate
+        StringRedisTemplate redisTemplate = new StringRedisTemplate();
+        redisTemplate.setConnectionFactory(jedisConnectionFactory2());
+        RedisSerializer stringSerializer = new StringRedisSerializer();
+        redisTemplate.setKeySerializer(stringSerializer); // key序列化
+        redisTemplate.setValueSerializer(stringSerializer); // value序列化
+        redisTemplate.setHashKeySerializer(stringSerializer); // Hash key序列化
+        redisTemplate.setHashValueSerializer(stringSerializer); // Hash value序列化
         redisTemplate.afterPropertiesSet();
         return redisTemplate;
     }
