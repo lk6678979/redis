@@ -1,4 +1,4 @@
-## 使用方法
+## 单DB版本，使用方法
 ### 1. 添加pom依赖
 ```$xml
 <?xml version="1.0" encoding="UTF-8"?>
