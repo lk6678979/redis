@@ -207,7 +207,7 @@ spring:
     block-when-exhausted: false
 ```
 ### 4. 使用
-*分别使用beanId注入即可
+* 分别使用beanId注入即可
 ```java
     @Autowired
     private RedisTemplate redisTemplate;
